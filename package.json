@@ -19,6 +19,7 @@
         "start": "tsdx watch",
         "build": "tsdx build",
         "test": "tsdx test --passWithNoTests",
+        "test:watch": "tsdx test --watch",
         "lint": "tsdx lint",
         "prepare": "tsdx build",
         "size": "size-limit",
@@ -41,7 +42,8 @@
     "name": "jv-product-card",
     "author": "Juan David",
     "module": "dist/jv-product-card.esm.js",
-    "size-limit": [{
+    "size-limit": [
+        {
             "path": "dist/jv-product-card.cjs.production.min.js",
             "limit": "10 KB"
         },
@@ -51,14 +53,20 @@
         }
     ],
     "devDependencies": {
+        "@babel/preset-env": "^7.26.9",
+        "@babel/preset-react": "^7.26.3",
         "@rollup/plugin-image": "^3.0.3",
         "@size-limit/preset-small-lib": "^11.2.0",
-        "@types/react": "^19.1.0",
-        "@types/react-dom": "^19.1.1",
+        "@types/react": "^19.1.1",
+        "@types/react-dom": "^19.1.2",
+        "babel-jest": "^29.7.0",
         "husky": "^9.1.7",
+        "identity-obj-proxy": "^3.0.0",
+        "jest": "^29.7.0",
         "postcss": "^8.5.3",
         "react": "^19.1.0",
         "react-dom": "^19.1.0",
+        "react-test-renderer": "^19.1.0",
         "rollup-plugin-postcss": "^4.0.2",
         "size-limit": "^11.2.0",
         "tsdx": "^0.14.1",
@@ -70,5 +78,14 @@
         "card",
         "juan",
         "david"
-    ]
+    ],
+    "dependencies": {
+        "@types/react-test-renderer": "^19.1.0"
+    },
+    "jest": {
+        "moduleNameMapper": {
+            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy",
+            "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+        }
+    }
 }
